@@ -9,7 +9,8 @@ my $make;
 
 BEGIN {
   if( $^O eq 'MSWin32' ) {
-    $make = ( ExtUtils::FakeConfig::find_program( 'dmake', 'nmake' ) )[1];
+    $make = $ENV{MAKE};
+    $make ||= ( ExtUtils::FakeConfig::find_program( 'nmake', 'dmake' ) )[1];
 
     $make || die "Unable to find 'make' program";
 
@@ -52,13 +53,13 @@ sub depend {
   my $this = shift;
   my $inst = $this->{INST_LIB};
 
+  my $extra_deps = join ' ', map { "$inst/" . $_->{Module} } @params;
+
   $this->SUPER::depend
     ( @_,
       ( $^O eq 'MSWin32' ?
-        ( pure_all => ( join ' ',
-          map { "$inst/" . $_->{Module} } @params ),
-          map { ( "$inst/" . $_->{Module}, 'pm_to_blib' ) } @params,
-        ) : () ),
+        ( 'pm_to_blib'  => $extra_deps ) :
+        () ),
     );
 }
 
