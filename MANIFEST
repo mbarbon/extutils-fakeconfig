@@ -11,3 +11,6 @@ spec/ap_mingw.txt
 
 script/fill_template.pl
 script/make_implib.pl
+
+t/01_compile.t
+t/02_basic.t

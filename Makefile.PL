@@ -28,6 +28,8 @@ WriteMakefile( NAME => 'ExtUtils::FakeConfig',
                    AUTHOR => 'Mattia Barbon <mbarbon@dsi.unive.it>',
                  ) : () ),
                VERSION_FROM => $liar,
+               PREREQ_PM => { 'File::Spec'        => 0,
+                              'Test'              => 0, };
              );
 
 print "Using: '$make'\n";
