@@ -22,7 +22,7 @@ REQUIREMENTS
 * MinGW GCC 2.95.2-1 or better
   plain 2.95.2 has a bug while handling -DMACRO=\"value\"
 
-* ActivePerl build >= 616
+* ActivePerl build >= 616 (8xx are fine, too)
   this procedure might or might not work with earlier 6xx builds,
   it will _surely not_ work with 5xx builds
 
@@ -61,4 +61,4 @@ dmake
 dmake test
 dmake install
 
-Good luck
+Good luck!
