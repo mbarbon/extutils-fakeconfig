@@ -1,10 +1,14 @@
+0.05  Sun Dec 22 15:58:20 CET 2002
+	- allow choosing which make to use via $ENV{MAKE}
+	- fixed bug with nmake
+
 0.04  Sat Nov 16 16:45:49 CET 2002
 	- added regression tests
 	- updated for ActivePerl 5.8.0
 
 0.03  Wed Feb 20 18:19:02 CET 2002
 	- minor tweaks to the configuration
-	  ( less warnings with recent Perls )
+	  (less warnings with recent Perls)
 	- added this file
 	- fixed error in INSTALL.txt
 	- downgraded the "can't find compiler" error
