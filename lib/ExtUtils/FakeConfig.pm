@@ -4,7 +4,7 @@ require Config;
 
 use vars qw($VERSION);
 
-$VERSION = 0.04;
+$VERSION = 0.05;
 
 eval {
   require File::Spec;
