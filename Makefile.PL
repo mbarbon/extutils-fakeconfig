@@ -29,7 +29,7 @@ WriteMakefile( NAME => 'ExtUtils::FakeConfig',
                  ) : () ),
                VERSION_FROM => $liar,
                PREREQ_PM => { 'File::Spec'        => 0,
-                              'Test'              => 0, };
+                              'Test'              => 0, },
              );
 
 print "Using: '$make'\n";
@@ -37,10 +37,12 @@ print "Using: '$make'\n";
 my( @params, $templater );
 BEGIN {
   $templater = '$(PERL) script/fill_template.pl';
-  @params = ( { Module => 'Config_m.pm',
+  @params = ( { Module   => 'Config_m.pm',
                 Template => 'spec/Config_ap.txt',
-                Spec => 'spec/ap_mingw.txt',
-                Params => 'cc=gcc pack_name=Config_m' },
+                Spec     => ( $] >= 5.008
+                              ? 'spec/ap_mingw_58.txt'
+                              : 'spec/ap_mingw.txt' ),
+                Params   => 'cc=gcc pack_name=Config_m' },
             );
 }
 
