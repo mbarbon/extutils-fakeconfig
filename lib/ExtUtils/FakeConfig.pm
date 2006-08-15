@@ -2,11 +2,12 @@ package ExtUtils::FakeConfig;
 
 use strict;
 
+require File::Spec;
 require Config;
 
 use vars qw($VERSION);
 
-$VERSION = 0.06;
+$VERSION = 0.07;
 
 sub import {
   shift;
@@ -51,15 +52,15 @@ ExtUtils::FakeConfig - overrides some configuration values
 This module is basically an hack to be used in Makefile.PL invocation:
 create a driver module like
 
-package my_Config:
+    package my_Config:
 
-use ExtUtils::FakeConfig cflags => '-lfoo -O14', ld => 'g++';
+    use ExtUtils::FakeConfig cflags => '-lfoo -O14', ld => 'g++';
 
-1;
+    1;
 
 and invoke
 
-perl -Mmy_Config Makefile.PL
+    perl -Mmy_Config Makefile.PL
 
 =head1 AUTHOR
 

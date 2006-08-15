@@ -2,8 +2,8 @@ MANIFEST
 Changes
 Makefile.PL
 README.txt
-INSTALL.txt
 
+lib/Config_m.pod
 lib/ExtUtils/FakeConfig.pm
 
 spec/Config_ap.txt

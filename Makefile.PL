@@ -2,6 +2,23 @@
 
 use strict;
 use lib 'lib';
+
+# poor man's File::Spec
+eval {
+  require File::Spec;
+};
+if( $@ ) {
+  eval <<'EOT';
+package File::Spec;
+
+sub catfile { shift; join '/', @_ }
+
+sub path { split /$Config::Config{path_sep}/, $ENV{PATH} }
+
+$INC{'File/Spec.pm'} = 'loaded';
+EOT
+}
+
 use Config;
 use ExtUtils::FakeConfig;
 
@@ -44,7 +61,7 @@ BEGIN {
                 Spec     => ( $] >= 5.008
                               ? 'spec/ap_mingw_58.txt'
                               : 'spec/ap_mingw.txt' ),
-                Params   => "cc=gcc pack_name=Config_m make=$make" },
+                Params   => "cc=gcc pack_name=Config_m" },
             );
 }
 
@@ -84,13 +101,28 @@ $lib/$i{Module} : $i{Template} $i{Spec}
 EOT
     }
 
-    my $lib_suff = $] >= 5.008 ? '58' : '56';
-    $ret .= <<EOT;
-implib :
-	\$(PERL) script\\make_implib.pl --output-dir=$Config{prefix}\\lib\\CORE --output-lib=libperl${lib_suff}.a --target=mingw $Config{prefix}\\bin\\perl${lib_suff}.dll
+    my $core = "$Config{archlibexp}\\CORE";
+    my $perl5_dll = ( glob( "$Config{binexp}\\perl*.dll" ) )[0];
+    my $gcc = ( ExtUtils::FakeConfig::find_program( 'gcc' ) )[1];
+    my $msvc = ( ExtUtils::FakeConfig::find_program( 'cl' ) )[1];
 
-pure_install :: implib
+    if( $gcc ) {
+      $ret .= <<EOT;
+pure_install :: implib_mingw
+
+implib_mingw :
+       \$(PERL) script\\make_implib.pl --output-dir="$core" --target=mingw "$perl5_dll"
+
 EOT
+    }
+
+    if( $msvc ) {
+      $ret .= <<EOT;
+implib_msvc :
+       \$(PERL) script\\make_implib.pl --output-dir="$core" --target=vc "$perl5_dll"
+
+EOT
+    }
   }
 
   return $ret;

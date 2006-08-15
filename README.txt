@@ -3,36 +3,57 @@ Config_m             - allows building modules for ActivePerl with MinGW GCC
 
 Mattia Barbon <mbarbon@cpan.org>
 
-for installation details see INSTALL.txt
+INSTALLATION
+
+* UN*X
+
+perl Makefile.PL
+make
+make install
+
+beware that this module is not very useful on UN*X platforms
+
+* Win32
+
+perl Makefile.PL
+# this will output a line -Using: 'MAKE'- where MAKE is either dmake or nmake
+MAKE
+MAKE install
+
+Please note that the build process will create import libraries for MinGW
+and MSVC only if either gcc.exe or cl.exe are on the path while running
+Makefile.PL.
+
+MODULES
 
 * ExtUtils::FakeConfig
 
   This module is meant to be used in module installation,
 in case you need an easy way to override some configuration values.
+It might be useful for other things, too.
 
 * Config_m
 
-  It is just a front-end to ExtUtils::FakeConfig: sets up %Config to allow
+  It is just a front-end to ExtUtils::FakeConfig: it sets up %Config to allow
 compilation of ActivePerl modules with MinGW GCC.
 
-Tested modules/OS
+Basic use:
 
-Module          Version         Perl version    OS
-DBD::CSV        0.1022          5.6.1           Win2k
-DBD::ODBC       0.28              "               "
-DBI             1.14              "               "
-SQL::Statement  0.1016            "               "
-Text::CSV_XS    0.20              "               "
-wxPerl          0.17              "               "
-wxPerl          0.17            5.8.0           Win2k
-Text::CSV_XS    0.23              "             WinXP
-Devel::Cover    0.26              "               "
-Template Tookit 2.20              "               "
-wxPerl          0.56            5.8.8           Win2k
+perl -MConfig_m Makefile.PL
+dmake
+dmake test
+dmake install
 
-  If you succeed in building some modules under other OSs
-(expecially 95/98/ME), please contact me so I can update the list.
+or
 
-Copyright (c) 2001-2002, 2006 Mattia Barbon. All rights reserved.
+set PERL5OPT=-MConfig_m
+perl Build.PL
+perl Build
+perl Build test
+perl Build install
+
+  It can be used with CPAN.pm/CPANPLUS.pm, too.
+
+Copyright (c) 2001, 2002, 2004, 2006 Mattia Barbon. All rights reserved.
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
