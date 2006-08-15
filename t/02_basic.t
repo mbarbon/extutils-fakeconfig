@@ -1,18 +1,13 @@
 #!/usr/bin/perl -w
 
 use strict;
-use Test;
-BEGIN { plan tests => 3 }
+use Test::More tests => 3;
 
 use ExtUtils::FakeConfig make => 'my_make',
                          cc => 'my_cc',
                          xxrv => 'dummy';
 use Config;
 
-ok( $Config{make}, 'my_make' );
-ok( $Config{cc}, 'my_cc' );
-ok( $Config{xxrv}, 'dummy' );
-
-# local variables:
-# mode: cperl
-# end:
+is( $Config{make}, 'my_make' );
+is( $Config{cc}, 'my_cc' );
+is( $Config{xxrv}, 'dummy' );

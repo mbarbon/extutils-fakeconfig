@@ -86,7 +86,7 @@ sub make_def_msvc {
 sub make_lib_mingw {
   my( $defname, $libname ) = @_;
 
-  system "dlltool --input-def $defname --output-lib $libname";
+  system "dlltool --kill-at --input-def $defname --output-lib $libname";
 }
 
 sub make_lib_msvc {
@@ -205,7 +205,3 @@ The library is named dllbase.lib (MSVC) or libdllbase.a (MinGW)
                     debugging )
 EOT
 }
-
-# Local variables: #
-# mode: cperl #
-# End: #

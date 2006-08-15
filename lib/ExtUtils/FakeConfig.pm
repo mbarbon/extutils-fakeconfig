@@ -1,23 +1,12 @@
 package ExtUtils::FakeConfig;
 
+use strict;
+
 require Config;
 
 use vars qw($VERSION);
 
-$VERSION = 0.05;
-
-eval {
-  require File::Spec;
-};
-if( $@ ) {
-  eval <<'EOT';
-package File::Spec;
-
-sub catfile { shift; join '/', @_ }
-
-sub path { split /$Config::Config{path_sep}/, $ENV{PATH} }
-EOT
-}
+$VERSION = 0.06;
 
 sub import {
   shift;
@@ -32,6 +21,7 @@ sub import {
 sub find_program {
   my @path = File::Spec->path();
 
+  # we can't use Config here...
   foreach my $prog ( map { ( $_, "$_.exe" ) } @_ ) {
     foreach my $path ( @path ) {
       if( -f File::Spec->catfile( $path, $prog ) ) {
@@ -45,6 +35,7 @@ sub find_program {
 }
 
 1;
+
 __END__
 
 =head1 NAME
@@ -72,10 +63,11 @@ perl -Mmy_Config Makefile.PL
 
 =head1 AUTHOR
 
-Mattia Barbon <mbarbon@dsi.unive.it>
+Mattia Barbon <mbarbon@cpan.org>
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
 
 =cut
-
-# Local variables: #
-# mode: cperl #
-# End: #

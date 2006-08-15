@@ -1,7 +1,7 @@
 ExtUtils::FakeConfig - allows overriding some %Config values
 Config_m             - allows building modules for ActivePerl with MinGW GCC
 
-Mattia Barbon <mbarbon@dsi.unive.it>
+Mattia Barbon <mbarbon@cpan.org>
 
 for installation details see INSTALL.txt
 
@@ -23,12 +23,16 @@ DBD::ODBC       0.28              "               "
 DBI             1.14              "               "
 SQL::Statement  0.1016            "               "
 Text::CSV_XS    0.20              "               "
-wxPerl          0.12              "               "
-wxPerl          0.12            5.8.0           Win2k
+wxPerl          0.17              "               "
+wxPerl          0.17            5.8.0           Win2k
+Text::CSV_XS    0.23              "             WinXP
+Devel::Cover    0.26              "               "
+Template Tookit 2.20              "               "
+wxPerl          0.56            5.8.8           Win2k
 
   If you succeed in building some modules under other OSs
 (expecially 95/98/ME), please contact me so I can update the list.
 
-Copyright (c) 2001-2002 Mattia Barbon. All rights reserved.
+Copyright (c) 2001-2002, 2006 Mattia Barbon. All rights reserved.
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

@@ -1,3 +1,12 @@
+Revision history for Perl extension ExtUtils::FakeConfig.
+
+0.06  Tue Aug 15 14:10:11 CEST 2006
+	- Remove -g from compiler flags.
+	- Make the choice to use nmake or dmake dynamic.
+	- Automated building the import library.
+	- Tested with ActivePerl 817.
+	- Switch tests to Test::More.
+
 0.05  Sun Dec 22 15:58:20 CET 2002
 	- allow choosing which make to use via $ENV{MAKE}
 	- fixed bug with nmake
@@ -12,11 +21,11 @@
 	- added this file
 	- fixed error in INSTALL.txt
 	- downgraded the "can't find compiler" error
-          to a warning
+	  to a warning
 
-0.02  xxx May 08 16:13:15 CEST 2001
+0.02  Tue May 08 16:13:15 CEST 2001
 	- automated building of Config_m.pm
 	- reworked as a generic override mechanism
 
-0.01  xxx Jan 18 20:08:10 CET 2001
+0.01  Thu Jan 18 20:08:10 CET 2001
 	- first version

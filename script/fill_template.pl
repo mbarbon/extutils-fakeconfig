@@ -1,3 +1,6 @@
+#!/usr/bin/perl -w
+
+use strict;
 
 my( $input, $spec, $output ) = @ARGV;
 my( %values );

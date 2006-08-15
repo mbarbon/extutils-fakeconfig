@@ -30,7 +30,8 @@ WriteMakefile( NAME => 'ExtUtils::FakeConfig',
                  ) : () ),
                VERSION_FROM => $liar,
                PREREQ_PM => { 'File::Spec'        => 0,
-                              'Test'              => 0, },
+                              'Test::More'        => 0.48,
+                              },
              );
 
 print "Using: '$make'\n";
@@ -43,11 +44,14 @@ BEGIN {
                 Spec     => ( $] >= 5.008
                               ? 'spec/ap_mingw_58.txt'
                               : 'spec/ap_mingw.txt' ),
-                Params   => 'cc=gcc pack_name=Config_m' },
+                Params   => "cc=gcc pack_name=Config_m make=$make" },
             );
 }
 
 package MY;
+
+use strict;
+use Config;
 
 sub depend {
   my $this = shift;
@@ -79,12 +83,16 @@ $lib/$i{Module} : $i{Template} $i{Spec}
 
 EOT
     }
+
+    my $lib_suff = $] >= 5.008 ? '58' : '56';
+    $ret .= <<EOT;
+implib :
+	\$(PERL) script\\make_implib.pl --output-dir=$Config{prefix}\\lib\\CORE --output-lib=libperl${lib_suff}.a --target=mingw $Config{prefix}\\bin\\perl${lib_suff}.dll
+
+pure_install :: implib
+EOT
   }
 
   return $ret;
 }
-
-# Local variables: #
-# mode: cperl #
-# End: #
 

@@ -15,3 +15,4 @@ script/make_implib.pl
 
 t/01_compile.t
 t/02_basic.t
+t/zz_pod.t

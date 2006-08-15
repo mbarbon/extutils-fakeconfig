@@ -15,7 +15,7 @@ perl Makefile.PL
 MAKE
 MAKE install
 
-COMPILING PERL MODULES FOR ActivePerl ( build 6xx ) with MinGW
+COMPILING PERL MODULES FOR ActivePerl (build 6xx/8xx) with MinGW
 
 REQUIREMENTS
 
@@ -26,7 +26,7 @@ REQUIREMENTS
   this procedure might or might not work with earlier 6xx builds,
   it will _surely not_ work with 5xx builds
 
-* dmake ( or nmake )
+* dmake (or nmake)
 
 Download these from
 
@@ -42,17 +42,19 @@ http://www.cpan.org/authors/id/GSAR/
 
 PROCEDURE
 
-* Install ExtUtils::FakeConfig and Config_m ( see above )
+* Install ExtUtils::FakeConfig and Config_m (see above)
 
 * create a suitable import library
-    Let's assume that your Perl is installed in C:\Perl, then from the
+  If you used 'MAKE implib', you don't need to do anything else, otherwise:
+
+    Let's assume that your Perl is installed in C:\Perl; from the
     command line do (all in one line, split here for clarity)
 
   perl script\make_implib.pl --output-dir=C:\Perl\lib\CORE
                              --output-lib=libperl56.a
                              --target=mingw c:\Perl\bin\Perl56.lib
 
-COMPILING THE MODULES ( works with Perl-only modules, too )
+COMPILING THE MODULES (works with Perl-only modules, too)
 
 for this to work gcc.exe should be in the PATH when you run Makefile.PL
 
