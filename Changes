@@ -1,5 +1,10 @@
 Revision history for Perl extension ExtUtils::FakeConfig.
 
+0.08  Sun Sep 17 16:55:34 CEST 2006
+	- Fix typo in 'perlpath' override (reported by Sisyphus).
+	- Change 'ld' override from gcc to g++ to match what recent
+	  Perls do under Win32/MinGW (suggested by Sisyphus).
+
 0.07  Tue Aug 15 14:57:35 CEST 2006
 	- remove -g from compiler flags, strip libraries when linking.
 	- make the choice to use nmake or dmake dynamic.
