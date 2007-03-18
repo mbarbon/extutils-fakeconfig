@@ -2,7 +2,6 @@ MANIFEST
 Changes
 Makefile.PL
 README.txt
-META.yml
 
 lib/Config_m.pod
 lib/ExtUtils/FakeConfig.pm

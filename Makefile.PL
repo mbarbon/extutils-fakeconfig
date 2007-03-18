@@ -37,6 +37,16 @@ BEGIN {
 
 use ExtUtils::MakeMaker;
 
+eval {
+    require ExtUtils::MY_Metafile;
+    ExtUtils::MY_Metafile->import;
+
+    my_metafile
+      ( { license        => 'perl',
+          dynamic_config => 1,
+          } );
+};
+
 my $liar = File::Spec->catfile( 'lib', 'ExtUtils', 'FakeConfig.pm' );
 
 WriteMakefile( NAME => 'ExtUtils::FakeConfig',
