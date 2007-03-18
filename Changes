@@ -1,5 +1,9 @@
 Revision history for Perl extension ExtUtils::FakeConfig.
 
+0.09  Sun Mar 18 20:46:55 CET 2007
+	- Fix bogus POD coverage test.
+	- Use ExtUtils::MY_Metafile to build META.yml.
+
 0.08  Sun Sep 17 16:55:34 CEST 2006
 	- Fix typo in 'perlpath' override (reported by Sisyphus).
 	- Change 'ld' override from gcc to g++ to match what recent

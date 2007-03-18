@@ -7,7 +7,7 @@ require Config;
 
 use vars qw($VERSION);
 
-$VERSION = 0.08;
+$VERSION = 0.09;
 
 sub import {
   shift;
@@ -61,6 +61,21 @@ create a driver module like
 and invoke
 
     perl -Mmy_Config Makefile.PL
+
+=head1 FUNCTIONS
+
+=head2 import
+
+  ExtUtils::FakeConfig->import( name1 => value1, name2 => value2 );
+
+Usually called through use(); overrides values from %Config.
+
+=head2 find_program 
+
+  my $executable = ExtUtils::FakeConfig::find_program( $program1, $program2 );
+
+Returns the absolute path of the first of the programs given as arguments found
+in the program search path.
 
 =head1 AUTHOR
 
