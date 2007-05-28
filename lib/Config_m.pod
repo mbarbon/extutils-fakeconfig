@@ -38,7 +38,7 @@ L<http://www.activestate.com/Products/ActivePerl/>.
 =item * dmake
 
 download from
-L<http://www.cpan.org/authors/id/G/GS/GSAR/dmake-4.1pl1-win32.zip>.
+L<http://search.cpan.org/dist/dmake/>.
 
 =back
 

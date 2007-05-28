@@ -1,5 +1,8 @@
 Revision history for Perl extension ExtUtils::FakeConfig.
 
+0.10  Mon May 28 21:41:57 CEST 2007
+	- Corrected dmake URL (patch by Steve Hay).
+
 0.09  Sun Mar 18 20:46:55 CET 2007
 	- Fix bogus POD coverage test.
 	- Use ExtUtils::MY_Metafile to build META.yml.
