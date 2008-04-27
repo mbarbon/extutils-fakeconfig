@@ -9,6 +9,7 @@ lib/ExtUtils/FakeConfig.pm
 spec/Config_ap.txt
 spec/ap_mingw.txt
 spec/ap_mingw_58.txt
+spec/ap_mingw_510.txt
 
 script/fill_template.pl
 script/make_implib.pl

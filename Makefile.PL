@@ -61,16 +61,17 @@ WriteMakefile( NAME => 'ExtUtils::FakeConfig',
                               },
              );
 
-print "Using: '$make'\n";
+print "Using: '$make'\n" if $^O eq 'MSWin32';
 
-my( @params, $templater );
+my( @params, $templater, $specfile );
 BEGIN {
+  $specfile = 'spec/ap_mingw.txt';
+  $specfile = 'spec/ap_mingw_58.txt'  if $] >= 5.008;
+  $specfile = 'spec/ap_mingw_510.txt' if $] >= 5.010;
   $templater = '$(PERL) script/fill_template.pl';
   @params = ( { Module   => 'Config_m.pm',
                 Template => 'spec/Config_ap.txt',
-                Spec     => ( $] >= 5.008
-                              ? 'spec/ap_mingw_58.txt'
-                              : 'spec/ap_mingw.txt' ),
+                Spec     => $specfile,
                 Params   => "cc=gcc pack_name=Config_m" },
             );
 }
@@ -121,7 +122,7 @@ EOT
 pure_install :: implib_mingw
 
 implib_mingw :
-       \$(PERL) script\\make_implib.pl --output-dir="$core" --target=mingw "$perl5_dll"
+	\$(PERL) script\\make_implib.pl --output-dir="$core" --target=mingw "$perl5_dll"
 
 EOT
     }
@@ -129,7 +130,7 @@ EOT
     if( $msvc ) {
       $ret .= <<EOT;
 implib_msvc :
-       \$(PERL) script\\make_implib.pl --output-dir="$core" --target=vc "$perl5_dll"
+	\$(PERL) script\\make_implib.pl --output-dir="$core" --target=vc "$perl5_dll"
 
 EOT
     }

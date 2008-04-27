@@ -7,7 +7,7 @@ require Config;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 sub import {
   shift;
