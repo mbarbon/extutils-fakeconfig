@@ -7,7 +7,7 @@ require Config;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 sub import {
   shift;
@@ -41,7 +41,7 @@ __END__
 
 =head1 NAME
 
-ExtUtils::FakeConfig - overrides some configuration values
+ExtUtils::FakeConfig - override %Config values on-the-fly
 
 =head1 SYNOPSIS
 

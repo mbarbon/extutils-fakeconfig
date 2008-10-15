@@ -53,7 +53,7 @@ WriteMakefile( NAME => 'ExtUtils::FakeConfig',
                # Perl < 5.005 does not support some attributes
                ( $] >= 5.005 ?
                  ( ABSTRACT_FROM => $liar,
-                   AUTHOR => 'Mattia Barbon <mbarbon@dsi.unive.it>',
+                   AUTHOR => 'Mattia Barbon <mbarbon@cpan.org>',
                  ) : () ),
                VERSION_FROM => $liar,
                PREREQ_PM => { 'File::Spec'        => 0,

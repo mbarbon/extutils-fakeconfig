@@ -4,6 +4,7 @@ Makefile.PL
 README.txt
 
 lib/Config_m.pod
+lib/Config_u.pm
 lib/ExtUtils/FakeConfig.pm
 
 spec/Config_ap.txt
