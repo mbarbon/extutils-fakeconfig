@@ -1,5 +1,9 @@
 Revision history for Perl extension ExtUtils::FakeConfig.
 
+0.13
+	- Added Config_osx.pm which supersedes Config_u.pm
+	  (patch by Mark Dootson).
+
 0.12  Wed Oct 15 20:53:50 CEST 2008
         - Added Config_u.pm, a quick hack to enable building modules
 	  as Universal binaries using Mac OS X system Perl.
