@@ -2,6 +2,7 @@
 
 use strict;
 use lib 'lib';
+use 5.006;
 
 # poor man's File::Spec
 eval {
@@ -95,19 +96,15 @@ sub depend {
     );
 }
 
-use vars qw(%i);
-
 sub postamble {
-  local( *i );
   my $ret;
   my $lib = $_[0]->{INST_LIB};
 
   if( $^O eq 'MSWin32' ) {
-    foreach my $j ( @params ) {
-      *i = $j;
+    foreach my $i ( @params ) {
       $ret .= <<EOT;
-$lib/$i{Module} : $i{Template} $i{Spec}
-	$templater $i{Template} $i{Spec} \$@ $i{Params}
+$lib/$i->{Module} : $i->{Template} $i->{Spec}
+	$templater $i->{Template} $i->{Spec} \$@ $i->{Params}
 
 EOT
     }

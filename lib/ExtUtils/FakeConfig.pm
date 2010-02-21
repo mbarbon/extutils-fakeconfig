@@ -5,9 +5,7 @@ use strict;
 require File::Spec;
 require Config;
 
-use vars qw($VERSION);
-
-$VERSION = '0.13';
+our $VERSION = '0.13';
 
 sub import {
   shift;
