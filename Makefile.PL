@@ -4,22 +4,6 @@ use strict;
 use lib 'lib';
 use 5.006;
 
-# poor man's File::Spec
-eval {
-  require File::Spec;
-};
-if( $@ ) {
-  eval <<'EOT';
-package File::Spec;
-
-sub catfile { shift; join '/', @_ }
-
-sub path { split /$Config::Config{path_sep}/, $ENV{PATH} }
-
-$INC{'File/Spec.pm'} = 'loaded';
-EOT
-}
-
 use Config;
 use ExtUtils::FakeConfig;
 
@@ -50,17 +34,15 @@ eval {
 
 my $liar = File::Spec->catfile( 'lib', 'ExtUtils', 'FakeConfig.pm' );
 
-WriteMakefile( NAME => 'ExtUtils::FakeConfig',
-               # Perl < 5.005 does not support some attributes
-               ( $] >= 5.005 ?
-                 ( ABSTRACT_FROM => $liar,
-                   AUTHOR => 'Mattia Barbon <mbarbon@cpan.org>',
-                 ) : () ),
-               VERSION_FROM => $liar,
-               PREREQ_PM => { 'File::Spec'        => 0,
-                              'Test::More'        => 0.48,
-                              },
-             );
+WriteMakefile( NAME            => 'ExtUtils::FakeConfig',
+               ABSTRACT_FROM   => $liar,
+               AUTHOR          => 'Mattia Barbon <mbarbon@cpan.org>',
+               VERSION_FROM    => $liar,
+               PREREQ_PM       =>
+                   { 'File::Spec'        => 0,
+                     'Test::More'        => 0.48,
+                     },
+               );
 
 print "Using: '$make'\n" if $^O eq 'MSWin32';
 
