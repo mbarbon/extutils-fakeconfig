@@ -20,6 +20,7 @@ Config_u - compile Mac OS X modules as Universal binaries
 
 =head1 SYNOPSIS
 
+  # see also Config_osx, which is more flexible
   perl -MConfig_u Makefile.PL
   make
   make test
@@ -27,13 +28,16 @@ Config_u - compile Mac OS X modules as Universal binaries
 
 with CPAN.pm/CPANPLUS.pm
 
+  # see also Config_osx, which is more flexible
   set PERL5OPT=-MConfig_u
   cpanp
 
 =head1 DESCRIPTION
 
-This module is only useful at Makefile.PL invocation time. It modifies
-some %Config values allowing compilation of Perl XS modules as
+Use C<Config_osx> instead of this module.
+
+This module is only useful at F<Makefile.PL> invocation time. It modifies
+some C<%Config> values allowing compilation of Perl XS modules as
 Universal binaries.  Note that the safest way to build Universal
 binaries is to compile the modules separately and then use lipo(1) to
 merge the resulting .bundle files.

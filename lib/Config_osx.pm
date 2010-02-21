@@ -102,14 +102,14 @@ with CPAN.pm/CPANPLUS.pm
 
 =head1 DESCRIPTION
 
-This module is only useful at Makefile.PL invocation time. It modifies
-some %Config values allowing compilation of Perl XS modules without passing
+This module is only useful at F<Makefile.PL> invocation time. It modifies
+some C<%Config> values allowing compilation of Perl XS modules without passing
 the '-nostdinc' flag. For current versions of ActivePerl, will also set
 the required compiler version (gcc-4.0).
 
 You may override the -nostdinc exclusion  by setting environment variable
 
-export FAKECONFIG_USE_NOSTDINC=1
+  export FAKECONFIG_USE_NOSTDINC=1
 
 The module also allows you to specify which architectures should be built
 by setting the environment variable FAKECONFIG_USE_ARCHITECTURES.
@@ -117,18 +117,14 @@ Allowed architectures are ppc, i386, x86_64
 
 For example, to specify universal 32 bit binaries
 
-export FAKECONFIG_USE_ARCHITECTURES="i386 ppc"
+  export FAKECONFIG_USE_ARCHITECTURES="i386 ppc"
 
 to specify combined 32 and 64bit intel binaries
 
-export FAKECONFIG_USE_ARCHITECTURES="i386 x86_64"
+  export FAKECONFIG_USE_ARCHITECTURES="i386 x86_64"
 
 =head1 AUTHOR
 
 Mark Dootson <mdootson@cpan.org>
 
 =cut
-
-
-
-

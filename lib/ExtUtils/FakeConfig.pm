@@ -47,7 +47,7 @@ ExtUtils::FakeConfig - override %Config values on-the-fly
 
 =head1 DESCRIPTION
 
-This module is basically an hack to be used in Makefile.PL invocation:
+This module is an hack to be used in F<Makefile.PL> invocation:
 create a driver module like
 
     package my_Config:
@@ -66,9 +66,9 @@ and invoke
 
   ExtUtils::FakeConfig->import( name1 => value1, name2 => value2 );
 
-Usually called through use(); overrides values from %Config.
+Usually called through use(); overrides values from C<%Config>.
 
-=head2 find_program 
+=head2 find_program
 
   my $executable = ExtUtils::FakeConfig::find_program( $program1, $program2 );
 

@@ -17,8 +17,8 @@ with CPAN.pm/CPANPLUS.pm
 
 =head1 DESCRIPTION
 
-This module is only useful at Makefile.PL invocation time. It modifies
-some %Config values allowing compilation of Perl XS modules with
+This module is only useful at F<Makefile.PL> invocation time. It modifies
+some C<%Config> values allowing compilation of Perl XS modules with
 MinGW GCC.
 
 =head1 REQUIREMENTS
