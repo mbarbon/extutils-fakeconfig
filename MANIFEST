@@ -17,6 +17,8 @@ script/fill_template.pl
 script/make_implib.pl
 
 t/01_compile.t
+t/01_compile_osx.t
+t/01_compile_win32.t
 t/02_basic.t
 t/zy_pod_coverage.t
 t/zz_pod.t
