@@ -50,9 +50,9 @@ ExtUtils::FakeConfig - override %Config values on-the-fly
 This module is an hack to be used in F<Makefile.PL> invocation:
 create a driver module like
 
-    package my_Config:
+    package my_Config;
 
-    use ExtUtils::FakeConfig cflags => '-lfoo -O14', ld => 'g++';
+    use ExtUtils::FakeConfig ccflags => '-lfoo -O14', ld => 'g++';
 
     1;
 
